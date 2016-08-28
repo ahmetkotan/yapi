@@ -10,13 +10,13 @@ sudo pip install yapi
 ```
 
 ## Using
-```
+```python
 import yapi
 api = yapi.YoutubeAPI('api_key')
 ```
 
 ## References
-```
+```python
 video = getVideoInfo('video_id')
 
 results = generalSearch('keyword', max_results=10)
