@@ -1,8 +1,8 @@
-#-*- coding:utf-8 -*-
-
 import json
 from argparse import Namespace
-import urllib, urllib2
+import urllib
+import urllib2
+
 
 class YoutubeManager():
     def __init__(self):
@@ -14,25 +14,25 @@ class YoutubeManager():
             'search': 'https://www.googleapis.com/youtube/v3/search',
             'channels': 'https://www.googleapis.com/youtube/v3/channels',
             'playlists': 'https://www.googleapis.com/youtube/v3/playlists',
-            'playlistItems': 'https://www.googleapis.com/youtube/v3/playlistItems',
+            'playlistItems':
+                'https://www.googleapis.com/youtube/v3/playlistItems'
         }
 
-    def setAPIKey(self, api_key):
+    def set_api_key(self, api_key):
         self.api_key = api_key
         return True
 
-    def getAPIKey(self):
+    def get_api_key(self):
         return self.api_key
 
-    def getAPI(self, apiname):
+    def get_api(self, apiname):
         return self.APIs[apiname]
 
-    def jsonToObject(self, json_data):
+    def json_to_object(self, json_data):
         x = json.loads(json_data, object_hook=lambda d: Namespace(**d))
         return x
 
-
-    def apiRequest(self, url, parameters):
+    def api_request(self, url, parameters):
         parameters['key'] = self.api_key
 
         req_url = url + '?' + urllib.urlencode(parameters)
@@ -40,8 +40,5 @@ class YoutubeManager():
         data = req.read()
         req.close()
 
-        youtube_object = self.jsonToObject(data)
+        youtube_object = self.json_to_object(data)
         return youtube_object
-
-
-

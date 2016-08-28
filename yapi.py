@@ -1,46 +1,43 @@
-#-*- coding:utf-8 -*-
-
-
 from manager import YoutubeManager
 
 manager = YoutubeManager()
 author = "ahmetkotan"
 author_website = "http://ahmetkotan.com.tr"
 
+
 class YoutubeAPI():
     def __init__(self, api_key):
-        manager.setAPIKey(api_key)
+        manager.set_api_key(api_key)
 
-    def getApiKey(self):
-        return manager.getAPIKey()
+    def get_api_key(self):
+        return manager.get_api_key()
 
-    def changeApiKey(self, api_key):
-        return manager.setAPIKey(api_key)
+    def change_api_key(self, api_key):
+        return manager.set_api_key(api_key)
 
-    def getVideoInfo(self, video_id):
-        api_url = manager.getAPI('videos')
+    def get_video_info(self, video_id):
+        api_url = manager.get_api('videos')
         params = {
             'id': video_id,
-            'key': self.getApiKey(),
             'part': 'id, snippet, contentDetails, player, statistics, status'
         }
 
-        video = manager.apiRequest(api_url, params)
+        video = manager.api_request(api_url, params)
         return video
 
-    def generalSearch(self, keyword, max_results=10):
-        api_url = manager.getAPI('search')
+    def general_search(self, keyword, max_results=10):
+        api_url = manager.get_api('search')
         params = {
             'q': keyword,
             'part': 'id, snippet',
             'maxResults': max_results
         }
 
-        objects = manager.apiRequest(api_url, params)
+        objects = manager.api_request(api_url, params)
         return objects
 
-    def videoSearch(self, keyword, max_results=10):
-        api_url = manager.getAPI('search')
+    def video_search(self, keyword, max_results=10):
+        api_url = manager.get_api('search')
         params = {
             'q': keyword,
             'type': 'video',
@@ -48,11 +45,11 @@ class YoutubeAPI():
             'maxResults': max_results
         }
 
-        videos = manager.apiRequest(api_url, params)
+        videos = manager.api_request(api_url, params)
         return videos
 
-    def videoSearchInChannel(self, keyword, channel_id, max_results=10):
-        api_url = manager.getAPI('search')
+    def video_search_in_channel(self, keyword, channel_id, max_results=10):
+        api_url = manager.get_api('search')
         params = {
             'q': keyword,
             'type': 'video',
@@ -61,59 +58,55 @@ class YoutubeAPI():
             'maxResults': max_results
         }
 
-        videos = manager.apiRequest(api_url, params)
+        videos = manager.api_request(api_url, params)
 
-
-    def getChannelByName(self, channel_name):
-        api_url = manager.getAPI('channels')
+    def get_channel_by_name(self, channel_name):
+        api_url = manager.get_api('channels')
         params = {
             'forUsername': channel_name,
             'part': 'id,snippet,contentDetails,statistics,invideoPromotion'
         }
 
-        channel = manager.apiRequest(api_url, params)
+        channel = manager.api_request(api_url, params)
         return channel
 
-    def getChannelById(self, channel_id):
-        api_url = manager.getAPI('channels')
+    def get_channel_by_id(self, channel_id):
+        api_url = manager.get_api('channels')
         params = {
             'id': channel_id,
             'part': 'id,snippet,contentDetails,statistics,invideoPromotion'
         }
 
-        channel = manager.apiRequest(api_url, params)
+        channel = manager.api_request(api_url, params)
         return channel
 
-    def getPlaylistById(self, playlist_id):
-        api_url = manager.getAPI('playlist')
+    def get_playlist_by_id(self, playlist_id):
+        api_url = manager.get_api('playlist')
         params = {
             'id': playlist_id,
             'part': 'id, snippet, status'
         }
 
-        playlist = manager.apiRequest(api_url, params)
+        playlist = manager.api_request(api_url, params)
         return playlist
 
-    def getPlaylistByChannelId(self, channel_id):
-        api_url = manager.getAPI('playlist')
+    def get_playlist_by_channel_id(self, channel_id):
+        api_url = manager.get_api('playlist')
         params = {
             'channelId': channel_id,
             'part': 'id, snippet, status'
         }
 
-        playlist = manager.apiRequest(api_url, params)
+        playlist = manager.api_request(api_url, params)
         return playlist
 
-    def getPlaylistItemsByPlaylistId(self, playlist_id, max_results=50):
-        api_url = manager.getAPI('playlistItems')
+    def get_playlist_items_by_playlist_id(self, playlist_id, max_results=50):
+        api_url = manager.get_api('playlistItems')
         params = {
             'playlistId': playlist_id,
             'part': 'id, snippet, contentDetails, status',
             'maxResults': max_results
         }
 
-        playlist_items = manager.apiRequest(api_url, params)
+        playlist_items = manager.api_request(api_url, params)
         return playlist_items
-
-
-

@@ -17,23 +17,23 @@ api = yapi.YoutubeAPI('api_key')
 
 ## References
 ```python
-video = getVideoInfo('video_id')
+video = get_video_info('video_id')
 
-results = generalSearch('keyword', max_results=10)
-videos = videoSearch('keyword', max_results=10)
-videos = videoSearchInChannel('keyword', 'channel_id', max_results=10)
+results = general_search('keyword', max_results=10)
+videos = video_search('keyword', max_results=10)
+videos = video_search_in_channel('keyword', 'channel_id', max_results=10)
 
-channel = getChannelByName('channel_name')
-channel = getChannelById('channel_id')
+channel = get_channel_by_name('channel_name')
+channel = get_channel_by_id('channel_id')
 
-playlist = getPlaylistById('playlist_id')
-playlist = getPlaylistByChannelId('channel_id')
+playlist = get_playlist_by_id('playlist_id')
+playlist = get_playlist_by_channel_id('channel_id')
 
-playlistItems = getPlaylistItemsByPlaylistId('playlist_id', max_results=20)
+playlistItems = get_playlist_items_by_playlist_id('playlist_id', max_results=20)
 
 # Special
-api_key = getApiKey()
-bool = changeApiKey('api_key')
+api_key = get_api_key()
+bool = change_api_key('api_key')
 ```
 
 ## Contributing
