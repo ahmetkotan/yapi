@@ -4,6 +4,9 @@ yapi
 
 **yapi** is a simple client api for youtube.It uses [Youtube Data API v3](https://developers.google.com/youtube/v3/).Before you can use, you must a create project in [here](https://console.developers.google.com/apis/api/youtube/overview).
 
+## Installation
+``` sudo pip install yapi```
+
 ## References
 ```
 videos getVideoInfo(video_id)
