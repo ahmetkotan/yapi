@@ -15,7 +15,7 @@ class YoutubeAPI():
         return manager.getAPIKey()
 
     def changeApiKey(self, api_key):
-        manager.setAPIKey(api_key)
+        return manager.setAPIKey(api_key)
 
     def getVideoInfo(self, video_id):
         api_url = manager.getAPI('videos')

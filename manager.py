@@ -19,6 +19,7 @@ class YoutubeManager():
 
     def setAPIKey(self, api_key):
         self.api_key = api_key
+        return True
 
     def getAPIKey(self):
         return self.api_key
