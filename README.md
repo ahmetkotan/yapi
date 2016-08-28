@@ -6,8 +6,8 @@ yapi
 
 ## Installation
 ``` 
-sudo pip install yapi ```
-
+sudo pip install yapi
+```
 
 ## Using
 ```
