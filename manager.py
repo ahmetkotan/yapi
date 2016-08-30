@@ -1,13 +1,19 @@
-import json
-from argparse import Namespace
-import urllib
-import urllib2
+try:
+    import json
+    from argparse import Namespace
+    import requests
+    from urllib import urlencode
+except ImportError:
+    import json
+    from argparse import Namespace
+    import requests
+    from urllib.parse import urlencode
 
-
-class YoutubeManager():
+class YoutubeManager:
     def __init__(self):
         self.author = "ahmetkotan"
         self.author_website = "http://ahmetkotan.com.tr"
+        self.api_key = None
 
         self.APIs = {
             'videos': 'https://www.googleapis.com/youtube/v3/videos',
@@ -35,10 +41,10 @@ class YoutubeManager():
     def api_request(self, url, parameters):
         parameters['key'] = self.api_key
 
-        req_url = url + '?' + urllib.urlencode(parameters)
-        req = urllib2.urlopen(req_url)
-        data = req.read()
-        req.close()
+        req_url = url + '?' + urlencode(parameters)
+
+        con = requests.get(req_url)
+        data = con.text
 
         youtube_object = self.json_to_object(data)
         return youtube_object

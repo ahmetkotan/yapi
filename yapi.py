@@ -5,7 +5,7 @@ author = "ahmetkotan"
 author_website = "http://ahmetkotan.com.tr"
 
 
-class YoutubeAPI():
+class YoutubeAPI:
     def __init__(self, api_key):
         manager.set_api_key(api_key)
 
@@ -59,6 +59,7 @@ class YoutubeAPI():
         }
 
         videos = manager.api_request(api_url, params)
+        return videos
 
     def get_channel_by_name(self, channel_name):
         api_url = manager.get_api('channels')
