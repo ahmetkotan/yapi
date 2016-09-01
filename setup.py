@@ -15,13 +15,14 @@ except IOError:
 
 setup(
     name='yapi',
-    version='v1.2',
+    version='v1.2.1',
     packages=[''],
+    install_requires=['requests==2.10'],
     url='http://www.ahmetkotan.com.tr',
     license='GPL',
     author='Ahmet Kotan',
     author_email='ahmtkotan@gmail.com',
     description='Python Youtube Data API v3',
     long_description=long_description,
-    keywords="youtube data api", requires=['requests']
+    keywords="youtube data api",
 )
