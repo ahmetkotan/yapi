@@ -17,7 +17,7 @@ setup(
     name='yapi',
     version='v1.2.1',
     packages=[''],
-    install_requires=['requests==2.10'],
+    install_requires=['requests'],
     url='http://www.ahmetkotan.com.tr',
     license='GPL',
     author='Ahmet Kotan',
