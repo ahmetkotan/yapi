@@ -15,7 +15,7 @@ except IOError:
 
 setup(
     name='yapi',
-    version='v1.2.1',
+    version='v1.2.2',
     packages=[''],
     install_requires=['requests'],
     url='http://www.ahmetkotan.com.tr',
