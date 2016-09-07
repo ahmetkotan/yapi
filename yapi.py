@@ -36,7 +36,7 @@ class YoutubeAPI:
         objects = manager.api_request(api_url, params)
         return objects
 
-    def video_search(self, keyword, max_results=10):
+    def video_search(self, keyword, max_results=10, order=None):
         api_url = manager.get_api('search')
         params = {
             'q': keyword,
@@ -44,6 +44,8 @@ class YoutubeAPI:
             'part': 'id, snippet',
             'maxResults': max_results
         }
+        if not order:
+            params['order'] = order
 
         videos = manager.api_request(api_url, params)
         return videos

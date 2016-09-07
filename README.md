@@ -20,8 +20,8 @@ api = yapi.YoutubeAPI('api_key')
 video = get_video_info('video_id')
 
 results = general_search('keyword', max_results=10)
-videos = video_search('keyword', max_results=10)
-videos = video_search_in_channel('keyword', 'channel_id', max_results=10)
+videos = video_search('keyword', max_results=10, order=None)
+videos = video_search_in_channel('keyword', 'channel_id', max_results=10, order=None)
 
 channel = get_channel_by_name('channel_name')
 channel = get_channel_by_id('channel_id')
