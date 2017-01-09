@@ -59,7 +59,7 @@ class YoutubeAPI:
             'part': 'id, snippet',
             'maxResults': max_results
         }
-        if not order:
+        if order:
             params['order'] = order
 
 
