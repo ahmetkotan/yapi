@@ -87,7 +87,7 @@ class YoutubeAPI:
         return channel
 
     def get_playlist_by_id(self, playlist_id):
-        api_url = manager.get_api('playlist')
+        api_url = manager.get_api('playlists')
         params = {
             'id': playlist_id,
             'part': 'id, snippet, status'
@@ -97,7 +97,7 @@ class YoutubeAPI:
         return playlist
 
     def get_playlist_by_channel_id(self, channel_id):
-        api_url = manager.get_api('playlist')
+        api_url = manager.get_api('playlists')
         params = {
             'channelId': channel_id,
             'part': 'id, snippet, status'
