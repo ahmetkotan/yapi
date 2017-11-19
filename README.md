@@ -17,23 +17,31 @@ api = yapi.YoutubeAPI('api_key')
 
 ## References
 ```python
-video = get_video_info('video_id')
+video = api.get_video_info('video_id')
 
-results = general_search('keyword', max_results=10)
-videos = video_search('keyword', max_results=10, order=None)
-videos = video_search_in_channel('keyword', 'channel_id', max_results=10, order=None)
+results = api.general_search('keyword', max_results=10)
+videos = api.video_search('keyword', max_results=10, order=None)
+videos = api.video_search_in_channel('keyword', 'channel_id', max_results=10, order=None)
 
-channel = get_channel_by_name('channel_name')
-channel = get_channel_by_id('channel_id')
+channel = api.get_channel_by_name('channel_name')
+channel = api.get_channel_by_id('channel_id')
 
-playlist = get_playlist_by_id('playlist_id')
-playlist = get_playlist_by_channel_id('channel_id')
+playlist = api.get_playlist_by_id('playlist_id')
+playlist = api.get_playlist_by_channel_id('channel_id')
 
-playlistItems = get_playlist_items_by_playlist_id('playlist_id', max_results=20)
+playlistItems = api.get_playlist_items_by_playlist_id('playlist_id', max_results=20)
 
 # Special
 api_key = get_api_key()
 bool = change_api_key('api_key')
+```
+
+## Pagination
+```python
+results = api.general_search('keyword', max_results=10, pageToken=PAGETOKEN)
+videos = api.video_search('keyword', max_results=10, order=None, pageToken=PAGETOKEN)
+videos = api.video_search_in_channel('keyword', 'channel_id', max_results=10, order=None, pageToken=PAGETOKEN)
+playlistItems = api.get_playlist_items_by_playlist_id('playlist_id', max_results=20, pageToken=PAGETOKEN)
 ```
 
 ## Contributing

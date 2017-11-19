@@ -25,7 +25,7 @@ class YoutubeAPI:
         video = manager.api_request(api_url, params)
         return video
 
-    def general_search(self, keyword, max_results=10):
+    def general_search(self, keyword, max_results=10, pageToken=None):
         api_url = manager.get_api('search')
         params = {
             'q': keyword,
@@ -33,10 +33,13 @@ class YoutubeAPI:
             'maxResults': max_results
         }
 
+        if pageToken:
+            params['pageToken'] = pageToken
+
         objects = manager.api_request(api_url, params)
         return objects
 
-    def video_search(self, keyword, max_results=10, order=None):
+    def video_search(self, keyword, max_results=10, order=None, pageToken=None):
         api_url = manager.get_api('search')
         params = {
             'q': keyword,
@@ -44,13 +47,16 @@ class YoutubeAPI:
             'part': 'id, snippet',
             'maxResults': max_results
         }
-        if not order:
+        if order:
             params['order'] = order
+
+        if pageToken:
+            params['pageToken'] = pageToken
 
         videos = manager.api_request(api_url, params)
         return videos
 
-    def video_search_in_channel(self, keyword, channel_id, max_results=10, order=None):
+    def video_search_in_channel(self, keyword, channel_id, max_results=10, order=None, pageToken=None):
         api_url = manager.get_api('search')
         params = {
             'q': keyword,
@@ -59,9 +65,12 @@ class YoutubeAPI:
             'part': 'id, snippet',
             'maxResults': max_results
         }
-        if not order:
+
+        if order:
             params['order'] = order
 
+        if pageToken:
+            params['pageToken'] = pageToken
 
         videos = manager.api_request(api_url, params)
         return videos
@@ -87,7 +96,7 @@ class YoutubeAPI:
         return channel
 
     def get_playlist_by_id(self, playlist_id):
-        api_url = manager.get_api('playlist')
+        api_url = manager.get_api('playlists')
         params = {
             'id': playlist_id,
             'part': 'id, snippet, status'
@@ -97,7 +106,7 @@ class YoutubeAPI:
         return playlist
 
     def get_playlist_by_channel_id(self, channel_id):
-        api_url = manager.get_api('playlist')
+        api_url = manager.get_api('playlists')
         params = {
             'channelId': channel_id,
             'part': 'id, snippet, status'
@@ -106,13 +115,16 @@ class YoutubeAPI:
         playlist = manager.api_request(api_url, params)
         return playlist
 
-    def get_playlist_items_by_playlist_id(self, playlist_id, max_results=50):
+    def get_playlist_items_by_playlist_id(self, playlist_id, max_results=50, pageToken=None):
         api_url = manager.get_api('playlistItems')
         params = {
             'playlistId': playlist_id,
             'part': 'id, snippet, contentDetails, status',
             'maxResults': max_results
         }
+
+        if pageToken:
+            params['pageToken'] = pageToken
 
         playlist_items = manager.api_request(api_url, params)
         return playlist_items
