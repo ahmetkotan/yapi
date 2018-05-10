@@ -6,6 +6,8 @@ author_website = "http://ahmetkotan.com.tr"
 
 
 class YoutubeAPI:
+    parts=['id', 'snippet', 'contentDetails', 'player',
+           'statistics', 'status', 'invideoPromotion' ]
     def __init__(self, api_key):
         manager.set_api_key(api_key)
 
@@ -39,12 +41,18 @@ class YoutubeAPI:
         objects = manager.api_request(api_url, params)
         return objects
 
-    def video_search(self, keyword, max_results=10, order=None, pageToken=None):
+    def video_search(self, keyword, max_results=10, order=None, pageToken=None, parts=None):
         api_url = manager.get_api('search')
+        if parts!=None:
+            InvalidParts = [ x for x in parts.split(',') if not x.strip() in self.parts ]
+            if len(InvalidParts)>0:
+                raise ValueError('Invalid Part Used: ' + ','.join(InvalidParts))
+        else:
+            parts='id, snippet'
         params = {
             'q': keyword,
             'type': 'video',
-            'part': 'id, snippet',
+            'part': parts,
             'maxResults': max_results
         }
         if order:
